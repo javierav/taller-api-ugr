@@ -44,6 +44,7 @@ class Advertisement
   ## CALLBACKS
   #
   before_create :generate_admin_token
+  after_create :send_email
 
   #
   ## PRIVATE METHODS
@@ -56,5 +57,9 @@ class Advertisement
 
   def generate_admin_token
     self.admin_token = SecureRandom.hex(13)
+  end
+
+  def send_email
+    AdvertisementMailer.with(advertisement: self).created_email.deliver_later
   end
 end
