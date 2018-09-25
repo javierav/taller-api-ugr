@@ -11,4 +11,8 @@ class ApplicationController < ActionController::API
   def render_404
     render json: {}, status: 404
   end
+
+  def current_user
+    nil
+  end
 end
