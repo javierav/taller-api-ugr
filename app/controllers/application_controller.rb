@@ -3,6 +3,11 @@ class ApplicationController < ActionController::API
 
   rescue_from Mongoid::Errors::DocumentNotFound, with: :render_404
   rescue_from Pundit::NotAuthorizedError, with: :render_403
+  rescue_from ActionController::ParameterMissing, with: :render_400
+
+  def render_400
+    render json: {}, status: 400
+  end
 
   def render_403
     render json: {}, status: 403
