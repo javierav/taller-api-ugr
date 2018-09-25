@@ -28,23 +28,22 @@ class Advertisement
   #
   with_options presence: true do
     validates :ad_type, inclusion: {in: TYPES}
-    validates :title, length: {minimum: 2, maximum: 30}
-    validates :location, length: {minimum: 2, maximum: 30, allow_blank: true}
-    validates :description, length: {minimum: 2, maximum: 30}
+    validates :title, length: {minimum: 2, maximum: 100}
+    validates :description, length: {minimum: 2, maximum: 3000}
     validates :price, numericality: {greater_than: 0}
-    validates :author_name, length: {minimum: 2, maximum: 30}
+    validates :author_name, length: {minimum: 2, maximum: 100}
     validates :author_email, confirmation: true
     validates :author_phone, phone: true
-    validates :admin_token
   end
 
+  validates :location, length: {minimum: 2, maximum: 100, allow_blank: true}
   validates :terms_of_service, acceptance: true
   validate :validate_author_email
 
   #
   ## CALLBACKS
   #
-  before_save :generate_admin_token
+  before_create :generate_admin_token
 
   #
   ## PRIVATE METHODS
