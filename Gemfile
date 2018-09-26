@@ -25,6 +25,8 @@ gem 'puma'
 ## LIBRARIES
 #
 gem 'as_json_representations'
+gem 'email_address'
+gem 'phonelib'
 gem 'pundit'
 gem 'rack-cors'
 
