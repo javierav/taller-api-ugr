@@ -7,7 +7,7 @@ FactoryBot.define do
     price { rand(1..1000).to_f }
     author_name { Faker::Name.name }
     sequence(:author_email) { |n| "author#{n}@example.org" }
-    author_phone { Faker::PhoneNumber.phone_number.gsub(/\D/, '') }
+    author_phone { '900 100 900' }
     terms_of_service { true }
   end
 end
